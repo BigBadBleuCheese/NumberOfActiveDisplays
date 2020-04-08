@@ -6,9 +6,10 @@ using namespace std;
 int main()
 {
     UINT32 pathCount, modeCount;
-    if (GetDisplayConfigBufferSizes(QDC_ONLY_ACTIVE_PATHS, &pathCount, &modeCount) != 0)
+    LONG getDisplayConfigBufferSizesResult = GetDisplayConfigBufferSizes(QDC_ONLY_ACTIVE_PATHS, &pathCount, &modeCount);
+    if (getDisplayConfigBufferSizesResult != 0)
     {
-        cerr << "GetDisplayConfigBufferSizes was unsuccessful";
+        cerr << "GetDisplayConfigBufferSizes returned unsuccessful result: " << getDisplayConfigBufferSizesResult;
         return 1;
     }
     cout << pathCount;
